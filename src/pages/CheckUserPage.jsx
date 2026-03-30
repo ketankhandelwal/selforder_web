@@ -7,7 +7,7 @@ import Spinner from '../components/Spinner'
 export default function CheckUserPage() {
   const { table, setPendingMobile } = useAuth()
   const navigate = useNavigate()
-  const [mobile, setMobile] = useState('')
+  const [mobile, setMobile]   = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError]     = useState(null)
 
@@ -29,17 +29,56 @@ export default function CheckUserPage() {
 
   return (
     <div className="auth-page">
-      <div className="auth-logo">🍽️ SelfOrder</div>
+      {/* Logo */}
+      <div style={{ marginBottom: 32 }}>
+        <div className="auth-logo">SelfOrder</div>
+        <p style={{ color: 'var(--on-surface-variant)', fontSize: '.9rem', fontWeight: 500 }}>
+          The culinary experience, simplified.
+        </p>
+      </div>
+
+      {/* Table badge */}
       {table && (
-        <div style={{ marginBottom: 24, padding: '10px 14px', background: 'var(--surface-low)', borderRadius: 10 }}>
-          <strong>{table.restaurantName}</strong>
-          <span style={{ color: 'var(--on-surface-variant)', marginLeft: 8 }}>Table {table.tableNumber}</span>
+        <div style={{
+          marginBottom: 28,
+          padding: '12px 16px',
+          background: 'var(--primary-fixed)',
+          borderRadius: 12,
+          display: 'flex', alignItems: 'center', gap: 10,
+        }}>
+          <div style={{
+            width: 36, height: 36, borderRadius: 9999,
+            background: 'linear-gradient(135deg,#a73400,#cc4911)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 2h18M3 22h18M3 12h18M12 2v20"/>
+            </svg>
+          </div>
+          <div>
+            <div style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 700, fontSize: '.9rem', color: 'var(--on-primary-fixed)',
+            }}>
+              {table.restaurantName}
+            </div>
+            <div style={{ fontSize: '.75rem', color: 'var(--on-primary-fixed)', opacity: .7 }}>
+              Table {table.tableNumber}
+            </div>
+          </div>
         </div>
       )}
-      <h2 style={{ marginBottom: 6 }}>Enter your mobile</h2>
+
+      <h2 style={{
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontWeight: 700, fontSize: '1.2rem', color: 'var(--on-surface)',
+        marginBottom: 6,
+      }}>
+        Enter your mobile
+      </h2>
       <p className="auth-subtitle">We'll check if you have an account</p>
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         <input
           className="input"
           type="tel"

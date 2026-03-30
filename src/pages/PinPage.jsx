@@ -31,14 +31,21 @@ export default function PinPage() {
 
   return (
     <div className="auth-page" style={{ alignItems: 'center', textAlign: 'center' }}>
-      <div className="auth-logo">🍽️ SelfOrder</div>
-      <h2 style={{ marginBottom: 6 }}>
+      <div style={{ marginBottom: 8 }}>
+        <div className="auth-logo">SelfOrder</div>
+      </div>
+
+      <h2 style={{
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        fontWeight: 700, fontSize: '1.25rem',
+        color: 'var(--on-surface)', marginBottom: 8,
+      }}>
         {isRegister ? 'Create your PIN' : 'Welcome back!'}
       </h2>
-      <p className="auth-subtitle" style={{ marginBottom: 40 }}>
+      <p className="auth-subtitle" style={{ marginBottom: 36 }}>
         {isRegister
           ? 'Set a 4-digit PIN for quick access'
-          : `Enter PIN for ${pendingMobile}`}
+          : `Enter your PIN for ${pendingMobile}`}
       </p>
 
       {loading
@@ -46,13 +53,24 @@ export default function PinPage() {
         : <PinInput onComplete={handlePin} disabled={loading} />
       }
 
-      {error && <p className="error-text" style={{ marginTop: 20 }}>{error}</p>}
+      {error && (
+        <p className="error-text" style={{ marginTop: 20 }}>{error}</p>
+      )}
 
       <button
         onClick={() => navigate('/auth')}
-        style={{ marginTop: 32, background: 'none', border: 'none', color: 'var(--on-surface-variant)', cursor: 'pointer', fontSize: '.9rem' }}
+        style={{
+          marginTop: 36, background: 'none', border: 'none',
+          color: 'var(--on-surface-variant)', cursor: 'pointer',
+          fontSize: '.88rem', fontWeight: 600,
+          fontFamily: "'Manrope', sans-serif",
+          display: 'flex', alignItems: 'center', gap: 4,
+        }}
       >
-        ← Change number
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--on-surface-variant)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Change number
       </button>
     </div>
   )

@@ -35,13 +35,14 @@ export default function PinInput({ onComplete, disabled }) {
           <div
             key={i}
             style={{
-              width: 60, height: 68,
-              borderRadius: 12,
-              border: `2px solid ${i === pin.length ? 'var(--primary)' : 'var(--outline)'}`,
-              background: 'var(--surface-lowest)',
+              width: 64, height: 72,
+              borderRadius: 16,
+              border: `2px solid ${i === pin.length ? 'var(--primary)' : 'rgba(225,191,180,.4)'}`,
+              background: i < pin.length ? 'var(--primary-fixed)' : 'var(--surface-lowest)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 24, fontWeight: 700, color: 'var(--on-surface)',
-              transition: 'border-color .15s',
+              fontSize: 22, fontWeight: 800, color: 'var(--primary)',
+              transition: 'border-color .2s, background .2s',
+              boxShadow: i === pin.length ? '0 0 0 3px rgba(167,52,0,.12)' : 'none',
             }}
           >
             {i < pin.length ? '●' : ''}
